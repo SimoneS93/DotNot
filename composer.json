@@ -1,6 +1,6 @@
 {
     "name": "simones/dotnot",
-    "description": "Access your data with dot notation.",
+    "description": "Access your data with dot notation. Array or objects: no matter what!",
     "authors": [
         {
             "name": "Simone Salerno",
