@@ -1,0 +1,28 @@
+{
+    "name": "simones/dotnot",
+    "description": "Access your data with dot notation.",
+    "authors": [
+        {
+            "name": "Simone Salerno",
+            "email": "salernosimone.uni@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.0",
+        "mockery/mockery": "dev-master"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-0": {
+            "DotNot": "src/"
+        }
+    }
+}
