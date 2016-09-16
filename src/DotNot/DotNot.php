@@ -2,9 +2,11 @@
 
 namespace DotNot;
 
+use ArrayAccess;
 use DotNot\Exceptions\ArrayKeyNotFoundException;
 use DotNot\Exceptions\DotNotException;
 use DotNot\Exceptions\NoMoreRecursionLevels;
+use DotNot\Exceptions\NotImplementedException;
 use DotNot\Exceptions\ObjectPropertyNotFound;
 use Symfony\Component\Process\Exception\InvalidArgumentException;
 
@@ -14,7 +16,7 @@ use Symfony\Component\Process\Exception\InvalidArgumentException;
  *
  * @author Dev
  */
-class DotNot
+class DotNot implements ArrayAccess
 {
     private $root;
     private $current;
@@ -27,6 +29,51 @@ class DotNot
     {
         $this->root = $root;
         $this->current = $this->root;
+    }
+    
+    /**
+     * @see ArrayAccess
+     * 
+     * @param stirng $offset
+     * @return boolean
+     */
+    public function offsetExists($offset)
+    {
+        return $this->has($offset);
+    }
+
+    /**
+     * @see ArrayAccess
+     * 
+     * @param stirng $offset
+     * @return boolean
+     */
+    public function offsetGet($offset)
+    {
+        return $this->get($offset);
+    }
+
+    /**
+     * @see ArrayAccess
+     * 
+     * @param string $offset
+     * @param mixed $value
+     * @throws NotImplementedException
+     */
+    public function offsetSet($offset, $value)
+    {
+        throw new NotImplementedException;
+    }
+
+    /**
+     * @see ArrayAccess
+     * 
+     * @param string $offset
+     * @throws NotImplementedException
+     */
+    public function offsetUnset($offset) 
+    {
+        throw new NotImplementedException;
     }
     
     /**

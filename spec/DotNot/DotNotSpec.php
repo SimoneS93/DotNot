@@ -2,8 +2,9 @@
 
 namespace spec\DotNot;
 
-use PhpSpec\ObjectBehavior;
+use DotNot\Exceptions\DotNotException;
 use Mockery as m;
+use PhpSpec\ObjectBehavior;
 
 
 class DotNotSpec extends ObjectBehavior
@@ -96,5 +97,26 @@ class DotNotSpec extends ObjectBehavior
         $this->beConstructedWith(['name' => 'Simone Salerno']);
         
         $this->has('foo')->shouldBe(false);
+    }
+    
+    function it_allows_array_access()
+    {
+        $this->beConstructedWith(['author' => ['name' => 'Simone Salerno']]);
+        
+        $this['author.name']->shouldBe('Simone Salerno');
+    }
+    
+    function it_tests_array_access_existence()
+    {
+        $this->beConstructedWith(['author' => ['name' => 'Simone Salerno']]);
+        
+        $this->shouldHaveKey('author.name');
+    }
+    
+    function it_throws_exception_on_not_found()
+    {
+        $this->beConstructedWith(['author' => ['name' => 'Simone Salerno']]);
+        
+        $this->shouldThrow(new DotNotException)->duringGet('foo');
     }
 }
