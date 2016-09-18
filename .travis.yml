@@ -10,4 +10,4 @@ install:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - vendor/bin/phpspec run -v
+  - bin/phpspec run -v
