@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/SimoneS93/DotNot.svg?branch=master)](https://travis-ci.org/SimoneS93/DotNot)
+
 Access you data via dot-notation, no matter if it's an array, a stdClass or a custom object!
 
 ## Install
