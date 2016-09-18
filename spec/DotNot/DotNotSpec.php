@@ -117,6 +117,18 @@ class DotNotSpec extends ObjectBehavior
     {
         $this->beConstructedWith(['author' => ['name' => 'Simone Salerno']]);
         
-        $this->shouldThrow(new DotNotException)->duringGet('foo');
+        $this->shouldThrow(DotNotException::class)->duringGet('foo');
+    }
+    
+    function it_throws_exception_on_array_set()
+    {
+        $this->beConstructedWith([]);
+        
+        try {
+            $this['name'] = 'Simone Salerno';
+            throw new \Exception;
+        }
+        catch (DotNotException $ex) { }
+        
     }
 }
